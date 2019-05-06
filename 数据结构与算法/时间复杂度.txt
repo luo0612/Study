@@ -1,0 +1,70 @@
+// 常数阶
+int sum = 0, n = 100;
+printf("I love \n");
+printf("I love \n");
+printf("I love \n");
+printf("I love \n");
+sum = (1 + n) * n / 2;
+// 该段代码的时间复杂度为 O(1)
+
+// =================================
+
+// 线性阶
+int i, n = 100;
+for(i = 0; i < n; i++){
+	function(i);
+}
+
+void function(int count){
+	printf("%d", count);
+}
+// 该段代码的时间复杂度为 O(n)
+
+// ==================================
+
+// 平方阶
+void function(int count){
+	int j;
+	for(j = count; j < n; j++){
+		printf("%d", j);
+	}
+}
+// function内部的循环次数随着count的增加(接近n)而减少
+// n + (n - 1) + (n -2) +......+ 1 = (n + 1) * n / 2 = n^2 / 2 + n / 2 
+// 根据规则: 只保留最高阶项, 去除与最高阶项相乘的常数
+// 得到, 该函数的数据复杂度为 O(n^2)
+
+// ===================================
+
+// 综合练习
+n++; // 执行 1 次
+function(n); // 执行 1 次
+for(i = 0; i < n; i++){
+	function(i); // 执行 n 次
+}
+for(i = 0; i < n; j++){
+	for(j = i; j < n; j++){
+		printf("%d", j); // 执行 n^2 / 2 + n / 2 次
+	}
+}
+void function(int count){
+	printf("%d", count);
+}
+
+// 根据规则: 只保留最高阶项, 去除与最高阶项相乘的常数
+// 该函数的时间复杂度为 O(n^2)
+
+// ===================================
+
+// 常见的时间复杂度
+// 例子                      时间复杂度                 术语
+// 5201314                   O(1)                       常数阶
+// 3n+4                      O(n)                       线性阶
+// 3n^2+4n+5                 O(n^2)                     平方阶
+// 3log(2)n+4                O(logn)                    对数阶
+// 2n+3nlog(2)n+1            O(nlogn)                   nlogn阶
+// n^3+2n^2+4n+6             O(n^3)                     立方阶
+// 2^n                       O(2^n)                     指数阶
+
+// 时间复杂度大小排序
+// O(1) < O(logn) < O(n) < O(nlogn) < O(n^2) < O(n^3) < O(2^n) < O(!n) < O(n^n)
